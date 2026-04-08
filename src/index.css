@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #F8F9F6;
+    color: #253937;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  #root {
+    width: 100%;
+    margin: 0;
+    text-align: left;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Rubik', sans-serif;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-600 { animation-delay: 600ms; }
+
+  .opacity-0-init { opacity: 0; }
+}
