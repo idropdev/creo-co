@@ -19,24 +19,24 @@ export default function CTASection() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-white overflow-hidden">
+    <section id="contact" className="py-28 sm:py-36 bg-white overflow-hidden">
       {/* Background accents */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-creo-border/20 blur-[100px]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
           {/* Left: headline + cal link */}
           <ScrollReveal>
-            <p className="font-body text-sm font-700 text-creo-burgundy uppercase tracking-wider mb-4">
+            <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-burgundy mb-6">
               Get Started
             </p>
-            <h2 className="font-heading font-800 text-4xl lg:text-5xl text-creo-dark mb-6">
+            <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-creo-dark mb-6 tracking-tight">
               {t.cta.heading}
             </h2>
-            <p className="font-body text-lg text-creo-dark/80 mb-10">
+            <p className="font-body text-lg text-creo-dark/70 mb-10 leading-relaxed">
               {t.cta.sub}
             </p>
 

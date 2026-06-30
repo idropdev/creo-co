@@ -11,7 +11,7 @@ const en = {
   },
   hero: {
     tagline:    'Creative strategic marketing designed to reach further.',
-    tagline2:   '',
+    tagline2:   'Across borders, languages & cultures.',
     sub:        'Creo is a Spanish word for “create and believe,” and we are dedicated to building strategic clarity and authentic narratives that help organizations grow and lead.',
     cta1:       'Discuss Your Marketing Needs',
     cta2:       'See How We Work',
@@ -55,6 +55,11 @@ const en = {
         desc:  'Compete at full strength with strategy, branding, and execution that fits your budget.',
         icon:  'Briefcase',
       },
+      {
+        title: 'Law Enforcement',
+        desc:  'Strategic communications and community engagement campaigns built for public safety agencies.',
+        icon:  'ShieldCheck',
+      },
     ],
   },
   services: {
@@ -73,9 +78,9 @@ const en = {
     ],
   },
   caseStudies: {
-    heading: 'Results That Speak',
+    heading: 'Experience Across Systems',
     sub:     'Real campaigns. Measurable outcomes. Clients who trust us to deliver.',
-    cta:     'View Full Case Study',
+    cta:     'View Details',
     items: [
       {
         client:   '[Draft] Case Study 1',
@@ -153,20 +158,6 @@ const en = {
       success: 'Thanks! We\'ll be in touch within 24 hours.',
     },
   },
-  referral: {
-    heading:    'Refer a Client. Earn $300.',
-    sub:        'Know someone who needs marketing strategy? Share your unique referral link. When they sign a contract, you earn $300.',
-    howHeading: 'How It Works',
-    steps: [
-      'Copy your unique referral link below',
-      'Share it with your network',
-      'When they sign a contract, we send you $300',
-    ],
-    copyLink:  'Copy My Referral Link',
-    copied:    'Copied!',
-    signUp:    'Get My Referral Link',
-    terms:     '$300 paid via check or PayPal within 30 days of contract signing. One referral per client.',
-  },
   footer: {
     tagline: 'We align systems, amplify impact, and turn clarity into measurable growth.',
     links: {
@@ -176,7 +167,6 @@ const en = {
     },
     legal:     '© 2026 Creo & Co. All rights reserved.',
     privacy:   'Privacy Policy',
-    referral:  'Referral Program',
   },
   about: {
     heading: 'Marketing That Means Something.',

@@ -3,50 +3,84 @@ import { Link } from 'react-router-dom'
 import { useLang } from '../../contexts/LanguageContext'
 import ScrollReveal from '../ui/ScrollReveal'
 
-// TODO: replace with real events data / API
 export const SAMPLE_EVENTS = [
   {
     id: 1,
-    title: 'Borderplex Business Summit',
-    date: '2025-09-15',
-    location: 'El Paso Convention Center',
-    category: 'Summit',
-    description: 'Annual gathering of regional business leaders and investors.',
+    title: 'J&K Detour Vol. 03 — A Night at the Air Museum',
+    date: '2026-06-06',
+    location: 'War Eagles Air Museum, 8012 Airport Rd, Santa Teresa, NM 88008',
+    category: 'Concert',
+    description: 'An evening experience at the War Eagles Air Museum featuring live music and community gathering.',
     registerUrl: '#',
   },
   {
     id: 2,
-    title: 'Marketing for Nonprofits Workshop',
-    date: '2025-10-03',
-    location: 'Virtual / Zoom',
-    category: 'Workshop',
-    description: 'Free workshop on digital strategy for nonprofit organizations.',
-    registerUrl: '#',
+    title: 'Flights and Sights',
+    date: '2026-06-20',
+    location: 'War Eagles Air Museum, 8012 Airport Rd, Santa Teresa, NM 88008',
+    category: 'Aviation',
+    description: 'A unique aviation experience combining flight demonstrations and scenic views at the War Eagles Air Museum.',
+    registerUrl: 'https://www.eventbrite.com/e/flights-sights-june-20-2026-tickets-1985906056474',
   },
   {
     id: 3,
-    title: 'Tourism & Destination Marketing Forum',
-    date: '2025-10-22',
-    location: 'Ciudad Juárez, Chih.',
-    category: 'Forum',
-    description: 'Binational forum for tourism professionals and destination marketers.',
-    registerUrl: '#',
+    title: 'STEAM Aviation Summer Camp',
+    date: '2026-06-22',
+    endDate: '2026-06-26',
+    location: 'War Eagles Air Museum, 8012 Airport Rd, Santa Teresa, NM 88008',
+    category: 'Aviation',
+    description: 'A week-long summer camp focused on STEAM education through the lens of aviation and aerospace.',
+    registerUrl: 'https://www.eventbrite.com/e/2026-aviation-summer-camp-tickets-1985770057698',
+  },
+  {
+    id: 4,
+    title: 'Community Is Currency: The Power of Networking, Visibility, & Relationships in Business',
+    date: '2026-06-25',
+    location: '500 N. Overland, Suite 210, El Paso, TX 79901',
+    category: 'Networking',
+    description: 'An interactive session on leveraging community connections, visibility, and relationships to grow your business.',
+    registerUrl: 'https://www.eventbrite.com/e/connect-grow-tickets-1990442410832',
+  },
+  {
+    id: 5,
+    title: 'Mountainstar Sports Group Amigo Airsho',
+    date: '2026-10-24',
+    endDate: '2026-10-25',
+    location: 'Biggs Army Airfield, Fort Bliss, TX',
+    category: 'Air Show',
+    description: 'The premier air show of the Borderplex region featuring thrilling aerial performances and military demonstrations.',
+    registerUrl: 'https://www.amigoairsho.com/tickets',
   },
 ]
 
-function formatDate(dateStr) {
+function formatDate(dateStr, endDateStr) {
   const d = new Date(dateStr + 'T00:00:00')
+  const month = d.toLocaleString('en-US', { month: 'short' }).toUpperCase()
+  const day = d.getDate()
+
+  if (endDateStr) {
+    const end = new Date(endDateStr + 'T00:00:00')
+    const endDay = end.getDate()
+    const endMonth = end.toLocaleString('en-US', { month: 'short' }).toUpperCase()
+    return {
+      month,
+      day: endMonth === month ? `${day}-${endDay}` : `${day}`,
+      full: `${d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} – ${end.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`,
+    }
+  }
+
   return {
-    month: d.toLocaleString('en-US', { month: 'short' }).toUpperCase(),
-    day: d.getDate(),
+    month,
+    day,
     full: d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }),
   }
 }
 
 const CAT_COLORS = {
-  Summit:   'bg-creo-primary/10 text-creo-primary',
-  Workshop: 'bg-creo-teal/10 text-creo-teal',
-  Forum:    'bg-creo-accent/10 text-creo-accent',
+  Concert:    'bg-creo-primary/10 text-creo-primary',
+  Aviation:   'bg-creo-teal/10 text-creo-teal',
+  Networking: 'bg-creo-accent/10 text-creo-accent',
+  'Air Show': 'bg-creo-primary/10 text-creo-primary',
 }
 
 export default function Events({ limit = 3 }) {
@@ -54,24 +88,24 @@ export default function Events({ limit = 3 }) {
   const events = SAMPLE_EVENTS.slice(0, limit)
 
   return (
-    <section id="events" className="py-24 bg-creo-light">
+    <section id="events" className="py-28 sm:py-36 bg-creo-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-20">
           <ScrollReveal>
-            <p className="font-body text-sm font-700 text-creo-primary uppercase tracking-wider mb-3">Events</p>
-            <h2 className="font-heading font-800 text-4xl lg:text-5xl text-creo-dark">
+            <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-primary mb-4">Events</p>
+            <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-creo-dark tracking-tight">
               {t.events.heading}
             </h2>
-            <p className="font-body text-lg text-creo-muted mt-4 max-w-xl">{t.events.sub}</p>
+            <p className="font-body text-lg text-creo-muted mt-6 max-w-xl leading-relaxed">{t.events.sub}</p>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
             <Link
               to="/events"
-              className="inline-flex items-center gap-2 text-creo-primary font-body font-700 hover:gap-3 transition-all duration-200 cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center gap-2 font-heading text-xs uppercase tracking-[0.15em] text-creo-primary hover:gap-3 transition-all duration-200 cursor-pointer whitespace-nowrap"
             >
-              View all events <ArrowRight size={18} aria-hidden="true" />
+              View all events <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </ScrollReveal>
         </div>
@@ -81,7 +115,7 @@ export default function Events({ limit = 3 }) {
         ) : (
           <div className="space-y-4">
             {events.map((event, i) => {
-              const date = formatDate(event.date)
+              const date = formatDate(event.date, event.endDate)
               const catColor = CAT_COLORS[event.category] || 'bg-creo-border text-creo-muted'
 
               return (

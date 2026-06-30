@@ -1,126 +1,224 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ArrowRight, ArrowDown } from 'lucide-react'
 import { useLang } from '../../contexts/LanguageContext'
-import AnimatedCounter from '../ui/AnimatedCounter'
-
-const STATS = [
-  { key: 'years',      value: '15+',   suffix: '' },
-  { key: 'bilingual',  value: 'EN/ES', suffix: '' },
-  { key: 'regions',    value: 'Multi', suffix: '' },
-  { key: 'strategic',  value: 'Yes',   suffix: '' },
-]
+import ScrollReveal from '../ui/ScrollReveal'
+import heroImg from '../../assets/hero/El Paso_Juarez_2024_PacoIbarra.jpg'
+import heroImg2 from '../../assets/hero/elpaso2023_andyaustin-5613.jpg'
 
 export default function Hero() {
   const { t } = useLang()
   const [loaded, setLoaded] = useState(false)
+  const [phase, setPhase] = useState(0) // 0 = locked, showing h1. 1 = animating. 2 = done, h2 shown, scroll unlocked
+  const [scrollY, setScrollY] = useState(0)
+  const phaseRef = useRef(0)
+  const touchStartY = useRef(0)
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 100)
     return () => clearTimeout(timer)
   }, [])
 
+  // Lock body scroll during phase 0 and 1
+  useEffect(() => {
+    if (phase < 2) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [phase])
+
+  // Parallax on scroll (only active after unlock)
+  useEffect(() => {
+    if (phase < 2) return
+    const onScroll = () => setScrollY(window.scrollY)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [phase])
+
+  const triggerSwap = useCallback(() => {
+    if (phaseRef.current !== 0) return
+    phaseRef.current = 1
+    setPhase(1)
+    setTimeout(() => {
+      phaseRef.current = 2
+      setPhase(2)
+    }, 800)
+  }, [])
+
+  // Wheel listener (scroll down triggers swap)
+  useEffect(() => {
+    if (phase >= 2) return
+    const onWheel = (e) => {
+      if (e.deltaY > 0 && phaseRef.current === 0) {
+        triggerSwap()
+      }
+    }
+    window.addEventListener('wheel', onWheel, { passive: true })
+    return () => window.removeEventListener('wheel', onWheel)
+  }, [phase, triggerSwap])
+
+  // Touch listeners (swipe up triggers swap)
+  useEffect(() => {
+    if (phase >= 2) return
+    const onTouchStart = (e) => {
+      touchStartY.current = e.touches[0].clientY
+    }
+    const onTouchMove = (e) => {
+      const diff = touchStartY.current - e.touches[0].clientY
+      if (diff > 30 && phaseRef.current === 0) {
+        triggerSwap()
+      }
+    }
+    window.addEventListener('touchstart', onTouchStart, { passive: true })
+    window.addEventListener('touchmove', onTouchMove, { passive: true })
+    return () => {
+      window.removeEventListener('touchstart', onTouchStart)
+      window.removeEventListener('touchmove', onTouchMove)
+    }
+  }, [phase, triggerSwap])
+
+  const parallaxOffset = scrollY * 0.3
+  const imageScale = 1 + scrollY * 0.0003
+
   return (
-    <section
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gradient-to-br from-[#DCD1BA] via-[#DFDBCD] to-[#EAE6DA]"
-      aria-label="Hero"
-    >
-      {/* Soft color overlay instead of neon blobs */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-5%] w-[800px] h-[800px] rounded-full bg-creo-khaki/20 blur-[150px]" />
-        <div className="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] rounded-full bg-creo-border/30 blur-[120px]" />
-      </div>
+    <div>
+      {/* Full-viewport hero */}
+      <section
+        className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-creo-dark"
+        aria-label="Hero"
+      >
+        {/* Background image with parallax */}
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src={heroImg}
+            alt=""
+            aria-hidden="true"
+            className="w-full h-[120%] object-cover"
+            style={{ transform: `translateY(-${parallaxOffset}px) scale(${imageScale})` }}
+          />
+          <div className="absolute inset-0 bg-creo-dark/50" />
+        </div>
 
-      {/* Grid pattern overlay */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,.3) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(0,0,0,.3) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
-
-
-        {/* Headline */}
-        <div className="max-w-4xl">
-          <h1
-            className={`font-heading font-800 text-5xl sm:text-6xl lg:text-7xl leading-[1.05] text-creo-dark mb-3
-              transition-all duration-700 delay-100 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-          >
-            {t.hero.tagline}
-          </h1>
-          <h1
-            className={`font-heading font-800 text-5xl sm:text-6xl lg:text-7xl leading-[1.05] text-creo-dark mb-8
-              transition-all duration-700 delay-200 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-          >
-            {t.hero.tagline2}
-          </h1>
-
-          <p
-            className={`font-body text-lg sm:text-xl text-creo-dark/80 max-w-2xl leading-relaxed mb-10
-              transition-all duration-700 delay-300 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-          >
-            {t.hero.sub}
-          </p>
-
-          {/* CTAs */}
-          <div
-            className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-[400ms]
-              ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-          >
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-creo-dark text-white font-body font-700 text-base px-8 py-4 rounded-full hover:bg-creo-dark/90 hover:gap-3 transition-all duration-200 cursor-pointer"
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24">
+          <div className="max-w-5xl">
+            <p
+              className={`font-body text-sm sm:text-base tracking-[0.3em] text-white/70 uppercase mb-8
+                transition-all duration-700 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
             >
-              {t.hero.cta1}
-              <ArrowRight size={18} aria-hidden="true" />
-            </Link>
-            <a
-              href="#case-studies"
-              onClick={(e) => {
-                e.preventDefault()
-                document.getElementById('case-studies')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-              className="inline-flex items-center justify-center gap-2 bg-transparent border border-creo-dark/20 text-creo-dark font-body font-600 text-base px-8 py-4 rounded-full hover:bg-black/5 hover:border-creo-dark/40 transition-all duration-200 cursor-pointer"
+              Bilingual Marketing &bull; Borderplex Region
+            </p>
+
+            {/* Headline swap zone */}
+            <div className="relative overflow-hidden mb-12" style={{ minHeight: 'clamp(7rem, 18vw, 16rem)' }}>
+              {/* Headline 1 — slides up and out */}
+              <h1
+                className={`transition-all duration-700 ease-in-out font-heading font-600 text-[clamp(2.5rem,7vw,7rem)] leading-[0.95] text-white tracking-tight
+                  ${loaded && phase === 0 ? 'opacity-100 translate-y-0' : ''}
+                  ${!loaded ? 'opacity-0 translate-y-8' : ''}
+                  ${phase >= 1 ? 'opacity-0 -translate-y-16' : ''}`}
+              >
+                {t.hero.tagline}
+              </h1>
+
+              {/* Headline 2 — slides up into place */}
+              <h1
+                className={`absolute top-0 left-0 right-0 transition-all duration-700 ease-in-out font-heading font-600 text-[clamp(2.5rem,7vw,7rem)] leading-[0.95] text-white tracking-tight
+                  ${phase >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
+              >
+                {t.hero.tagline2}
+              </h1>
+            </div>
+
+            <p
+              className={`font-body text-lg sm:text-xl text-white/70 max-w-xl leading-relaxed mb-12
+                transition-all duration-700 delay-500 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
             >
-              {t.hero.cta2}
-            </a>
+              {t.hero.sub}
+            </p>
+
+            {/* CTAs */}
+            <div
+              className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-[600ms]
+                ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+            >
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-white text-creo-dark font-heading font-600 text-sm uppercase tracking-wider px-10 py-5 rounded-full hover:bg-creo-khaki hover:text-creo-dark hover:gap-3 transition-all duration-300 cursor-pointer"
+              >
+                {t.hero.cta1}
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+              <a
+                href="#services"
+                onClick={(e) => {
+                  e.preventDefault()
+                  const el = document.getElementById('services')
+                  if (el) {
+                    const top = el.getBoundingClientRect().top + window.scrollY - 80
+                    window.scrollTo({ top, behavior: 'smooth' })
+                  }
+                }}
+                className="inline-flex items-center justify-center gap-2 bg-transparent border border-white/30 text-white font-heading font-600 text-sm uppercase tracking-wider px-10 py-5 rounded-full hover:bg-white/10 hover:border-white/60 transition-all duration-300 cursor-pointer"
+              >
+                {t.hero.cta2}
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Stats */}
-        <div
-          className={`grid grid-cols-2 sm:grid-cols-4 gap-6 mt-20 pt-10 border-t border-creo-dark/10
-            transition-all duration-700 delay-500 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+        {/* Scroll indicator */}
+        <a
+          href="#next"
+          onClick={(e) => {
+            e.preventDefault()
+            if (phase < 2) {
+              triggerSwap()
+            } else {
+              const el = document.getElementById('trust-bar')
+              if (el) {
+                const top = el.getBoundingClientRect().top + window.scrollY - 80
+                window.scrollTo({ top, behavior: 'smooth' })
+              }
+            }
+          }}
+          className={`absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/50 hover:text-white transition-all duration-500 cursor-pointer
+            ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          aria-label="Scroll down"
         >
-          {STATS.map(({ key, value, suffix }) => (
-            <div key={key} className="text-center sm:text-left">
-              <div className="font-heading font-800 text-4xl text-creo-dark/90">
-                {value}
-              </div>
-              <div className="font-body text-sm text-creo-dark/60 mt-1">{t.stats[key]}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+          <span className="font-heading text-xs uppercase tracking-[0.2em]">Scroll</span>
+          <ArrowDown size={16} className="animate-bounce" aria-hidden="true" />
+        </a>
+      </section>
 
-      {/* Scroll indicator */}
-      <a
-        href="#services"
-        onClick={(e) => {
-          e.preventDefault()
-          document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
-        }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-creo-dark/40 hover:text-creo-dark/80 transition-colors cursor-pointer"
-        aria-label="Scroll to services"
-      >
-        <span className="font-body text-xs">Scroll</span>
-        <ChevronDown size={18} className="animate-bounce" aria-hidden="true" />
-      </a>
-    </section>
+      {/* Mission statement with image */}
+      <section className="bg-creo-light py-24 sm:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <ScrollReveal>
+              <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-primary mb-6">Who We Are</p>
+              <h2 className="font-body italic text-3xl sm:text-4xl lg:text-5xl text-creo-dark leading-[1.2] mb-8">
+                Creo is a Spanish word for &ldquo;create and believe,&rdquo; and we are dedicated to building strategic clarity.
+              </h2>
+              <div className="w-16 h-px bg-creo-primary" />
+            </ScrollReveal>
+
+            <ScrollReveal delay={150}>
+              <div className="relative">
+                <div className="rounded-2xl overflow-hidden shadow-2xl">
+                  <img
+                    src={heroImg2}
+                    alt="El Paso skyline overlooking the city"
+                    className="w-full h-[400px] lg:h-[500px] object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+    </div>
   )
 }

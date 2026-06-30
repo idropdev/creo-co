@@ -18,10 +18,10 @@ const es = {
     badge:      'Bilingüe · Borderplex · Orientado a Resultados',
   },
   stats: {
-    clients:    'Clientes Atendidos',
-    industries: 'Industrias',
-    bilingual:  'Campañas Bilingües',
-    retention:  'Retención de Clientes',
+    years:      'Años de servicio',
+    bilingual:  'Bilingüe inglés-español',
+    regions:    'Multi-Región',
+    strategic:  'Visión estratégica',
   },
   trust: {
     heading: 'Con la Confianza de Organizaciones de Toda la Región',
@@ -55,6 +55,11 @@ const es = {
         desc:  'Compite con toda la fuerza con estrategia, marca y ejecución que se adapta a tu presupuesto.',
         icon:  'Briefcase',
       },
+      {
+        title: 'Seguridad Pública',
+        desc:  'Comunicación estratégica y campañas de participación comunitaria para agencias de seguridad pública.',
+        icon:  'ShieldCheck',
+      },
     ],
   },
   services: {
@@ -72,9 +77,9 @@ const es = {
     ],
   },
   caseStudies: {
-    heading: 'Resultados que Hablan',
+    heading: 'Experiencia a Través de Sistemas',
     sub:     'Campañas reales. Resultados medibles. Clientes que confían en nosotros.',
-    cta:     'Ver Caso Completo',
+    cta:     'Ver Detalles',
     items: [
       {
         client:   'Corp. Regional de Desarrollo Económico',
@@ -152,19 +157,28 @@ const es = {
       success: '¡Gracias! Te contactaremos en menos de 24 horas.',
     },
   },
-  referral: {
-    heading:    'Refiere un Cliente. Gana $300.',
-    sub:        '¿Conoces a alguien que necesite estrategia de marketing? Comparte tu enlace único. Cuando firmen un contrato, ganas $300.',
-    howHeading: 'Cómo Funciona',
-    steps: [
-      'Copia tu enlace de referido único abajo',
-      'Compártelo con tu red de contactos',
-      'Cuando firmen un contrato, te enviamos $300',
-    ],
-    copyLink:  'Copiar Mi Enlace de Referido',
-    copied:    '¡Copiado!',
-    signUp:    'Obtener Mi Enlace de Referido',
-    terms:     '$300 pagados vía cheque o PayPal dentro de 30 días de la firma del contrato. Un referido por cliente.',
+  about: {
+    heading: 'Marketing con Significado.',
+    body1: 'Creo and Co. fue fundada para impulsar negocios y apoyar a organizaciones que enfrentan marketing poco claro, desalineado o ineficaz.',
+    body2: 'Nuestro enfoque se basa en pensamiento sistémico. Cada decisión se toma con la visión completa en mente.',
+    body3: 'El trabajo está moldeado por la región binacional y multicultural que servimos y una profunda comprensión de operar a través de fronteras, idiomas, industrias y sectores.',
+    body4: 'Al analizar patrones, interdependencias y causas raíz, ayudamos a las organizaciones a obtener la claridad necesaria para posicionarse en el mercado y avanzar con confianza.',
+    body5: 'En última instancia, traducimos desafíos en confianza, ayudando a las organizaciones a reconocer su fortaleza, articularla con intención y escalar su impacto sin perder integridad.',
+    valuesHeading: 'Lo que nos define.',
+    values: [
+      {
+        title: 'Autenticidad',
+        desc: 'Autenticidad significa honrar la voz, los valores y el contexto verdaderos de cada organización con la que trabajamos.'
+      },
+      {
+        title: 'Creatividad',
+        desc: 'Cada mensaje está diseñado para resolver un problema, clarificar un mensaje o mover a una audiencia a la acción.'
+      },
+      {
+        title: 'Integridad',
+        desc: 'Integridad significa operar con transparencia, honestidad y responsabilidad en cada etapa del trabajo.'
+      }
+    ]
   },
   footer: {
     tagline: 'Estrategia y ejecución de marketing para organizaciones que quieren crecer.',
@@ -175,7 +189,6 @@ const es = {
     },
     legal:    '© 2025 Creo & Co. Todos los derechos reservados.',
     privacy:  'Política de Privacidad',
-    referral: 'Programa de Referidos',
   },
 }
 

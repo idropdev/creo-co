@@ -5,21 +5,36 @@ import { SAMPLE_EVENTS } from '../components/sections/Events'
 import ScrollReveal from '../components/ui/ScrollReveal'
 import CTASection from '../components/sections/CTASection'
 
-const CATEGORIES = ['All', 'Summit', 'Workshop', 'Forum']
+const CATEGORIES = ['All', 'Concert', 'Aviation', 'Networking', 'Air Show']
 
-function formatDate(dateStr) {
+function formatDate(dateStr, endDateStr) {
   const d = new Date(dateStr + 'T00:00:00')
+  const month = d.toLocaleString('en-US', { month: 'short' }).toUpperCase()
+  const day = d.getDate()
+
+  if (endDateStr) {
+    const end = new Date(endDateStr + 'T00:00:00')
+    const endDay = end.getDate()
+    const endMonth = end.toLocaleString('en-US', { month: 'short' }).toUpperCase()
+    return {
+      month,
+      day: endMonth === month ? `${day}-${endDay}` : `${day}`,
+      full: `${d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} – ${end.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`,
+    }
+  }
+
   return {
-    month: d.toLocaleString('en-US', { month: 'short' }).toUpperCase(),
-    day: d.getDate(),
+    month,
+    day,
     full: d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }),
   }
 }
 
 const CAT_COLORS = {
-  Summit:   'bg-creo-primary/10 text-creo-primary border-creo-primary/20',
-  Workshop: 'bg-creo-teal/10 text-creo-teal border-creo-teal/20',
-  Forum:    'bg-creo-accent/10 text-creo-accent border-creo-accent/20',
+  Concert:    'bg-creo-primary/10 text-creo-primary border-creo-primary/20',
+  Aviation:   'bg-creo-teal/10 text-creo-teal border-creo-teal/20',
+  Networking: 'bg-creo-accent/10 text-creo-accent border-creo-accent/20',
+  'Air Show': 'bg-creo-primary/10 text-creo-primary border-creo-primary/20',
 }
 
 export default function EventsPage() {
@@ -33,13 +48,13 @@ export default function EventsPage() {
   return (
     <>
       {/* Page header */}
-      <section className="bg-creo-border/30 pt-28 pb-16">
+      <section className="bg-creo-dark pt-32 pb-20 sm:pt-40 sm:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-body text-sm font-700 text-creo-burgundy uppercase tracking-wider mb-3">Calendar</p>
-          <h1 className="font-heading font-800 text-5xl lg:text-6xl text-creo-dark mb-4">
+          <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-khaki mb-6">Calendar</p>
+          <h1 className="font-heading font-600 text-5xl sm:text-6xl lg:text-7xl text-white mb-5 tracking-tight">
             {t.events.heading}
           </h1>
-          <p className="font-body text-lg text-creo-dark/80 max-w-2xl">{t.events.sub}</p>
+          <p className="font-body text-lg text-white/60 max-w-2xl leading-relaxed">{t.events.sub}</p>
         </div>
       </section>
 
@@ -73,7 +88,7 @@ export default function EventsPage() {
           ) : (
             <div className="space-y-4">
               {filtered.map((event, i) => {
-                const date = formatDate(event.date)
+                const date = formatDate(event.date, event.endDate)
                 const catColor = CAT_COLORS[event.category] || 'bg-creo-border text-creo-muted border-creo-border'
 
                 return (

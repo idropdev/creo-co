@@ -2,84 +2,76 @@ import { CheckCircle, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useLang } from '../../contexts/LanguageContext'
 import ScrollReveal from '../ui/ScrollReveal'
+import heroImg2 from '../../assets/hero/elpaso2023_andyaustin-5613.jpg'
 
 export default function Borderplex() {
   const { t } = useLang()
 
   return (
-    <section id="borderplex" className="py-24 bg-creo-light overflow-hidden">
+    <section id="borderplex" className="py-28 sm:py-36 bg-creo-dark overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-          {/* Left: visual */}
-          <ScrollReveal direction="right">
-            <div className="relative">
-              {/* Map/graphic placeholder */}
-              <div className="relative bg-creo-border/30 rounded-3xl overflow-hidden aspect-square max-w-md mx-auto lg:mx-0 border border-creo-dark/5">
-                {/* Decorative gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-creo-khaki/20 to-creo-border/40" />
-
-                {/* US side */}
-                <div className="absolute top-1/4 left-1/4 bg-creo-primary/90 rounded-2xl px-6 py-4 shadow-xl">
-                  <p className="font-heading font-800 text-white text-lg">United States</p>
-                  <p className="font-body text-white/70 text-sm">El Paso, TX</p>
+        {/* Top: large image with overlay text */}
+        <ScrollReveal>
+          <div className="relative rounded-2xl overflow-hidden mb-20">
+            <img
+              src={heroImg2}
+              alt="El Paso skyline at dusk"
+              className="w-full h-[350px] sm:h-[450px] object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-creo-dark via-creo-dark/40 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12">
+              <div className="flex flex-wrap gap-x-12 gap-y-4">
+                <div>
+                  <p className="font-heading font-600 text-4xl sm:text-5xl text-white">2.7M+</p>
+                  <p className="font-body text-sm text-white/50 mt-1">Binational Population</p>
                 </div>
-
-                {/* MX side */}
-                <div className="absolute bottom-1/4 right-1/4 bg-creo-accent/90 rounded-2xl px-6 py-4 shadow-xl">
-                  <p className="font-heading font-800 text-white text-lg">México</p>
-                  <p className="font-body text-white/70 text-sm">Ciudad Juárez, Chih.</p>
+                <div>
+                  <p className="font-heading font-600 text-4xl sm:text-5xl text-white">2</p>
+                  <p className="font-body text-sm text-white/50 mt-1">Countries</p>
                 </div>
-
-                {/* Connection line */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-px h-32 bg-gradient-to-b from-creo-primary/50 to-creo-accent/50 rotate-45" aria-hidden="true" />
+                <div>
+                  <p className="font-heading font-600 text-4xl sm:text-5xl text-white">3</p>
+                  <p className="font-body text-sm text-white/50 mt-1">States</p>
                 </div>
-
-                {/* Creo badge */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-white rounded-full w-16 h-16 flex items-center justify-center shadow-2xl">
-                    <span className="font-heading font-900 text-creo-primary text-lg">C&</span>
-                  </div>
+                <div>
+                  <p className="font-heading font-600 text-4xl sm:text-5xl text-white">EN/ES</p>
+                  <p className="font-body text-sm text-white/50 mt-1">Bilingual</p>
                 </div>
-              </div>
-
-              {/* Floating stat */}
-              <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl px-6 py-4 border border-creo-border">
-                <p className="font-heading font-800 text-3xl text-creo-primary">2.7M+</p>
-                <p className="font-body text-xs text-creo-muted mt-0.5">Binational Population</p>
               </div>
             </div>
-          </ScrollReveal>
+          </div>
+        </ScrollReveal>
 
-          {/* Right: content */}
-          <ScrollReveal direction="left" delay={150}>
-            <p className="font-body text-sm font-700 text-creo-teal uppercase tracking-wider mb-4">
+        {/* Bottom: text content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          <ScrollReveal>
+            <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-teal mb-6">
               Borderplex Advantage
             </p>
-            <h2 className="font-heading font-800 text-4xl lg:text-5xl text-creo-dark mb-3">
+            <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-white mb-4 tracking-tight leading-[0.95]">
               {t.borderplex.heading}
             </h2>
-            <p className="font-heading font-500 text-xl text-creo-primary italic mb-6">
+            <p className="font-body italic text-xl text-creo-khaki mb-8">
               {t.borderplex.sub}
             </p>
-            <p className="font-body text-creo-muted leading-relaxed mb-8">
+            <p className="font-body text-white/60 leading-relaxed">
               {t.borderplex.body}
             </p>
+          </ScrollReveal>
 
-            {/* Points */}
-            <ul className="space-y-3 mb-10" role="list">
+          <ScrollReveal delay={150}>
+            <ul className="space-y-4 mb-10" role="list">
               {t.borderplex.points.map((point) => (
                 <li key={point} className="flex items-start gap-3">
                   <CheckCircle size={20} className="text-creo-teal shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="font-body text-creo-dark font-500">{point}</span>
+                  <span className="font-body text-white/80">{point}</span>
                 </li>
               ))}
             </ul>
 
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 bg-creo-teal text-white font-body font-700 px-8 py-4 rounded-full hover:bg-creo-teal/90 hover:gap-3 transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center gap-2 bg-white text-creo-dark font-heading text-sm uppercase tracking-wider px-8 py-4 rounded-full hover:bg-creo-khaki hover:gap-3 transition-all duration-200 cursor-pointer"
             >
               {t.borderplex.cta} <ArrowRight size={18} aria-hidden="true" />
             </Link>

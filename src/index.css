@@ -2,13 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Tomato Grotesk';
+  src: url('./assets/fonts/TomatoGrotesk-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tomato Grotesk';
+  src: url('./assets/fonts/TomatoGrotesk-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ceraph';
+  src: url('./assets/fonts/Ceraph-Roman.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ceraph';
+  src: url('./assets/fonts/Ceraph-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Ceraph', Georgia, serif;
     background-color: #F8F9F6;
     color: #253937;
     -webkit-font-smoothing: antialiased;
@@ -26,7 +58,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Tomato Grotesk', 'Rubik', sans-serif;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -51,4 +83,18 @@
   .animation-delay-600 { animation-delay: 600ms; }
 
   .opacity-0-init { opacity: 0; }
+
+  .perspective { perspective: 1000px; }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
 }

@@ -1,40 +1,80 @@
+import { useState } from 'react'
 import { CheckCircle } from 'lucide-react'
 import ScrollReveal from '../components/ui/ScrollReveal'
 import CTASection from '../components/sections/CTASection'
 import { useLang } from '../contexts/LanguageContext'
+import headshotAdriana from '../assets/team/IMG_5158-2.jpg'
+import heroAbout from '../assets/hero/elpaso2023_andyaustin-5613.jpg'
 
+const FLIP_COLORS = [
+  { bg: 'bg-creo-primary', text: 'text-white' },
+  { bg: 'bg-creo-accent', text: 'text-white' },
+  { bg: 'bg-creo-teal', text: 'text-white' },
+]
 
+function FlipCard({ title, description, index }) {
+  const [flipped, setFlipped] = useState(false)
+  const color = FLIP_COLORS[index % FLIP_COLORS.length]
+
+  return (
+    <div
+      className="perspective cursor-pointer h-64 sm:h-72"
+      onClick={() => setFlipped(f => !f)}
+      onKeyDown={(e) => e.key === 'Enter' && setFlipped(f => !f)}
+      role="button"
+      tabIndex={0}
+      aria-label={`${title} — click to ${flipped ? 'hide' : 'reveal'} definition`}
+    >
+      <div className={`relative w-full h-full preserve-3d transition-transform duration-500 ${flipped ? 'rotate-y-180' : ''}`}>
+        {/* Front */}
+        <div className={`absolute inset-0 backface-hidden ${color.bg} rounded-2xl flex flex-col items-center justify-center p-8`}>
+          <h3 className={`font-heading font-600 text-3xl sm:text-4xl ${color.text} text-center uppercase tracking-wider`}>
+            {title}
+          </h3>
+          <p className={`font-body text-sm ${color.text}/70 mt-4`}>Tap to reveal</p>
+        </div>
+        {/* Back */}
+        <div className="absolute inset-0 backface-hidden rotate-y-180 bg-white border border-creo-border rounded-2xl flex flex-col items-center justify-center p-8">
+          <h3 className="font-heading font-600 text-xl text-creo-dark mb-4">{title}</h3>
+          <p className="font-body text-creo-muted leading-relaxed text-center">{description}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function AboutPage() {
   const { t } = useLang()
 
   return (
     <>
-      {/* Header */}
-      <section className="bg-creo-border/30 pt-28 pb-20 overflow-hidden">
-        <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-creo-khaki/20 blur-[120px]" />
+      {/* Header — full-bleed hero image */}
+      <section className="relative pt-32 pb-24 sm:pt-40 sm:pb-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={heroAbout} alt="" className="w-full h-full object-cover" aria-hidden="true" />
+          <div className="absolute inset-0 bg-creo-dark/60" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="font-body text-sm font-700 text-creo-burgundy uppercase tracking-wider mb-4">{t.nav.about}</p>
-          <h1 className="font-heading font-800 text-5xl lg:text-6xl text-creo-dark mb-6 max-w-3xl">
+          <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-khaki mb-6">{t.nav.about}</p>
+          <h1 className="font-heading font-600 text-5xl sm:text-6xl lg:text-7xl text-white mb-8 max-w-4xl tracking-tight leading-[0.95]">
             {t.about.heading}
           </h1>
-          <p className="font-body text-lg text-creo-dark/80 max-w-2xl leading-relaxed">
+          <p className="font-body text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed">
             {t.about.body1}
           </p>
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="py-24 bg-white">
+      {/* Mission — asymmetric layout */}
+      <section className="py-28 sm:py-36 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <ScrollReveal>
-              <p className="font-body text-sm font-700 text-creo-primary uppercase tracking-wider mb-4">Our Approach</p>
-              <h2 className="font-heading font-800 text-4xl lg:text-5xl text-creo-dark mb-6">
+              <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-primary mb-6">Our Approach</p>
+              <h2 className="font-body italic text-3xl sm:text-4xl text-creo-dark mb-8 leading-[1.3]">
                 {t.about.body2}
               </h2>
+              <div className="w-16 h-px bg-creo-primary mb-8" />
               <p className="font-body text-creo-muted leading-relaxed mb-6">
                 {t.about.body3}
               </p>
@@ -47,15 +87,15 @@ export default function AboutPage() {
             </ScrollReveal>
 
             <ScrollReveal delay={150}>
-              <div className="bg-creo-light border border-creo-border rounded-3xl p-8 h-full flex flex-col justify-center">
-                <p className="font-heading font-700 text-xl text-creo-dark mb-6">
+              <div className="bg-creo-light border border-creo-border rounded-2xl p-10 h-full flex flex-col justify-center">
+                <p className="font-heading font-600 text-xl text-creo-dark mb-8">
                   {t.borderplex.sub}
                 </p>
-                <div className="space-y-4">
+                <div className="space-y-5">
                   {t.borderplex.points.map(point => (
                     <div key={point} className="flex items-start gap-3">
                       <CheckCircle size={18} className="text-creo-teal shrink-0 mt-0.5" aria-hidden="true" />
-                      <span className="font-body text-creo-dark font-500">{point}</span>
+                      <span className="font-body text-creo-dark">{point}</span>
                     </div>
                   ))}
                 </div>
@@ -65,25 +105,41 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-24 bg-creo-light">
+      {/* Values — Interactive Flip Cards */}
+      <section className="py-28 sm:py-36 bg-creo-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal className="text-center mb-16">
-            <p className="font-body text-sm font-700 text-creo-primary uppercase tracking-wider mb-3">Values</p>
-            <h2 className="font-heading font-800 text-4xl lg:text-5xl text-creo-dark">{t.about.valuesHeading}</h2>
+          <ScrollReveal className="text-center mb-20">
+            <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-primary mb-4">Values</p>
+            <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-creo-dark tracking-tight">{t.about.valuesHeading}</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {t.about.values.map((v, i) => (
               <ScrollReveal key={v.title} delay={i * 80}>
-                <div className="bg-white border border-creo-border rounded-2xl p-8 h-full">
-                  <div className="font-heading font-800 text-4xl text-creo-border mb-4">
-                    {String(i + 1).padStart(2, '0')}
-                  </div>
-                  <h3 className="font-heading font-700 text-xl text-creo-dark mb-3">{v.title}</h3>
-                  <p className="font-body text-sm text-creo-muted leading-relaxed">{v.desc}</p>
-                </div>
+                <FlipCard title={v.title} description={v.desc} index={i} />
               </ScrollReveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="py-28 sm:py-36 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="text-center mb-20">
+            <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-primary mb-4">Our Team</p>
+            <h2 className="font-heading font-600 text-4xl sm:text-5xl text-creo-dark tracking-tight">The People Behind Creo&nbsp;&&nbsp;Co.</h2>
+          </ScrollReveal>
+
+          <div className="max-w-sm mx-auto">
+            <ScrollReveal>
+              <div className="text-center">
+                <div className="w-48 h-48 mx-auto rounded-2xl overflow-hidden mb-8 shadow-lg">
+                  <img src={headshotAdriana} alt="Adriana — Founder & Principal" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+                <h3 className="font-heading font-600 text-2xl text-creo-dark">Adriana</h3>
+                <p className="font-heading text-xs uppercase tracking-[0.2em] text-creo-primary mt-2">Founder & Principal</p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

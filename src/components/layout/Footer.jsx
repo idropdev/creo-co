@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom'
-// Social icons as inline SVGs (lucide-react doesn't include brand icons)
 import { useLang } from '../../contexts/LanguageContext'
+import logoDeepGreen from '../../assets/logos/Creo&Co_Logo_Deep Green_01_Subtitle.svg'
 
 const COMPANY_LINKS = [
   { label: 'About',        href: '/about' },
   { label: 'Case Studies', href: '/#case-studies' },
   { label: 'Events',       href: '/events' },
-  { label: 'Referral',     href: '/referral' },
   { label: 'Contact',      href: '/contact' },
 ]
 
@@ -28,10 +27,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="inline-block font-heading font-800 text-2xl mb-4 cursor-pointer">
-              <span className="text-creo-primary">Creo</span>{' '}
-              <span className="text-creo-dark/50">&</span>{' '}
-              <span className="text-creo-dark">Co.</span>
+            <Link to="/" className="inline-block mb-4 cursor-pointer">
+              <img src={logoDeepGreen} alt="Creo & Co." className="h-12 w-auto" />
             </Link>
             <p className="font-body text-sm text-creo-dark/60 leading-relaxed mb-6 max-w-xs">
               {t.footer.tagline}
@@ -71,7 +68,7 @@ export default function Footer() {
 
           {/* Company links */}
           <div>
-            <h3 className="font-heading font-700 text-sm uppercase tracking-wider text-creo-dark/40 mb-4">
+            <h3 className="font-heading font-600 text-sm uppercase tracking-wider text-creo-dark/40 mb-4">
               {t.footer.links.company}
             </h3>
             <ul className="space-y-2.5" role="list">
@@ -90,7 +87,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="font-heading font-700 text-sm uppercase tracking-wider text-creo-dark/40 mb-4">
+            <h3 className="font-heading font-600 text-sm uppercase tracking-wider text-creo-dark/40 mb-4">
               {t.footer.links.services}
             </h3>
             <ul className="space-y-2.5" role="list">
@@ -104,7 +101,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-heading font-700 text-sm uppercase tracking-wider text-creo-dark/40 mb-4">
+            <h3 className="font-heading font-600 text-sm uppercase tracking-wider text-creo-dark/40 mb-4">
               {t.footer.links.connect}
             </h3>
             <ul className="space-y-2.5 font-body text-sm text-creo-dark/70" role="list">
@@ -137,9 +134,6 @@ export default function Footer() {
           <div className="flex gap-6">
             <Link to="/privacy" className="font-body text-xs text-creo-dark/40 hover:text-creo-dark/80 transition-colors cursor-pointer">
               {t.footer.privacy}
-            </Link>
-            <Link to="/referral" className="font-body text-xs text-creo-dark/40 hover:text-creo-dark/80 transition-colors cursor-pointer">
-              {t.footer.referral}
             </Link>
           </div>
         </div>

@@ -1,8 +1,8 @@
-import { TrendingUp, Heart, Stethoscope, MapPin, Briefcase } from 'lucide-react'
+import { TrendingUp, Heart, Stethoscope, MapPin, Briefcase, ShieldCheck } from 'lucide-react'
 import { useLang } from '../../contexts/LanguageContext'
 import ScrollReveal from '../ui/ScrollReveal'
 
-const ICON_MAP = { TrendingUp, Heart, Stethoscope, MapPin, Briefcase }
+const ICON_MAP = { TrendingUp, Heart, Stethoscope, MapPin, Briefcase, ShieldCheck }
 
 const COLORS = [
   { bg: 'bg-creo-primary/10', icon: 'text-creo-primary', border: 'border-creo-primary/20', hover: 'hover:border-creo-primary/60' },
@@ -10,21 +10,22 @@ const COLORS = [
   { bg: 'bg-creo-teal/10',    icon: 'text-creo-teal',    border: 'border-creo-teal/20',    hover: 'hover:border-creo-teal/60' },
   { bg: 'bg-creo-primary/10', icon: 'text-creo-primary', border: 'border-creo-primary/20', hover: 'hover:border-creo-primary/60' },
   { bg: 'bg-creo-accent/10',  icon: 'text-creo-accent',  border: 'border-creo-accent/20',  hover: 'hover:border-creo-accent/60' },
+  { bg: 'bg-creo-teal/10',    icon: 'text-creo-teal',    border: 'border-creo-teal/20',    hover: 'hover:border-creo-teal/60' },
 ]
 
 export default function Industries() {
   const { t } = useLang()
 
   return (
-    <section id="industries" className="py-24 bg-creo-light">
+    <section id="industries" className="py-28 sm:py-36 bg-creo-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <ScrollReveal className="text-center mb-16">
-          <p className="font-body text-sm font-700 text-creo-primary uppercase tracking-wider mb-3">Industries</p>
-          <h2 className="font-heading font-800 text-4xl lg:text-5xl text-creo-dark mb-4">
+        <ScrollReveal className="text-center mb-20">
+          <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-primary mb-4">Industries</p>
+          <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-creo-dark mb-5 tracking-tight">
             {t.industries.heading}
           </h2>
-          <p className="font-body text-lg text-creo-muted max-w-2xl mx-auto">
+          <p className="font-body text-lg text-creo-muted max-w-2xl mx-auto leading-relaxed">
             {t.industries.sub}
           </p>
         </ScrollReveal>

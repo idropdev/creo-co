@@ -12,15 +12,15 @@ export default function CaseStudies() {
   const { t } = useLang()
 
   return (
-    <section id="case-studies" className="py-24 bg-creo-light">
+    <section id="case-studies" className="py-28 sm:py-36 bg-creo-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <ScrollReveal className="text-center mb-16">
-          <p className="font-body text-sm font-700 text-creo-burgundy uppercase tracking-wider mb-3">Case Studies</p>
-          <h2 className="font-heading font-800 text-4xl lg:text-5xl text-creo-dark mb-4">
+        <ScrollReveal className="text-center mb-20">
+          <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-burgundy mb-4">Experience</p>
+          <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-creo-dark mb-5 tracking-tight">
             {t.caseStudies.heading}
           </h2>
-          <p className="font-body text-lg text-creo-dark/70 max-w-2xl mx-auto">
+          <p className="font-body text-lg text-creo-dark/70 max-w-2xl mx-auto leading-relaxed">
             {t.caseStudies.sub}
           </p>
         </ScrollReveal>
