@@ -1,5 +1,4 @@
 import { CheckCircle, ArrowRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import { useLang } from '../../contexts/LanguageContext'
 import ScrollReveal from '../ui/ScrollReveal'
 import heroImg2 from '../../assets/hero/elpaso2023_andyaustin-5613.jpg'
@@ -69,12 +68,14 @@ export default function Borderplex() {
               ))}
             </ul>
 
-            <Link
-              to="/contact"
+            <a
+              href="https://links.mylayerone.com/widget/bookings/creoconadriana"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white text-creo-dark font-heading text-sm uppercase tracking-wider px-8 py-4 rounded-full hover:bg-creo-khaki hover:gap-3 transition-all duration-200 cursor-pointer"
             >
               {t.borderplex.cta} <ArrowRight size={18} aria-hidden="true" />
-            </Link>
+            </a>
           </ScrollReveal>
         </div>
       </div>

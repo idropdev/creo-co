@@ -1,5 +1,4 @@
 import { ArrowRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import { useLang } from '../../contexts/LanguageContext'
 import ScrollReveal from '../ui/ScrollReveal'
 import MarqueeBanner from './MarqueeBanner'
@@ -24,12 +23,14 @@ export default function Services() {
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <Link
-              to="/contact"
+            <a
+              href="https://links.mylayerone.com/widget/bookings/creoconadriana"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-heading text-xs uppercase tracking-[0.15em] text-creo-primary hover:gap-3 transition-all duration-200 cursor-pointer whitespace-nowrap"
             >
               {t.nav.cta} <ArrowRight size={16} aria-hidden="true" />
-            </Link>
+            </a>
           </ScrollReveal>
         </div>
 

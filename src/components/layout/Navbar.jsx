@@ -98,8 +98,10 @@ export default function Navbar() {
               {lang === 'en' ? 'ES' : 'EN'}
             </button>
 
-            <Link
-              to="/contact"
+            <a
+              href="https://links.mylayerone.com/widget/bookings/creoconadriana"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`font-heading text-xs uppercase tracking-[0.15em] px-6 py-3 rounded-full transition-all duration-300 cursor-pointer whitespace-nowrap ${
                 scrolled
                   ? 'bg-creo-dark text-white hover:bg-creo-primary'
@@ -107,7 +109,7 @@ export default function Navbar() {
               }`}
             >
               {t.nav.cta}
-            </Link>
+            </a>
           </div>
 
           {/* Mobile: language + hamburger */}
@@ -151,12 +153,14 @@ export default function Navbar() {
             </li>
           ))}
           <li className="pt-2">
-            <Link
-              to="/contact"
+            <a
+              href="https://links.mylayerone.com/widget/bookings/creoconadriana"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block text-center bg-creo-primary text-white font-body font-600 text-sm px-5 py-3 rounded-full hover:bg-creo-primary/90 transition-colors cursor-pointer"
             >
               {t.nav.cta}
-            </Link>
+            </a>
           </li>
         </ul>
       </div>

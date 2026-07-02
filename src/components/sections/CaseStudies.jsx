@@ -1,12 +1,8 @@
-import { ArrowRight } from 'lucide-react'
+import { Landmark, Heart, Briefcase } from 'lucide-react'
 import { useLang } from '../../contexts/LanguageContext'
 import ScrollReveal from '../ui/ScrollReveal'
 
-const TAG_COLORS = [
-  'bg-creo-primary/10 text-creo-primary',
-  'bg-creo-accent/10 text-creo-accent',
-  'bg-creo-teal/10 text-creo-teal',
-]
+const ICONS = [Landmark, Heart, Briefcase]
 
 export default function CaseStudies() {
   const { t } = useLang()
@@ -16,54 +12,77 @@ export default function CaseStudies() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <ScrollReveal className="text-center mb-20">
-          <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-burgundy mb-4">Experience</p>
-          <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-creo-dark mb-5 tracking-tight">
+          <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-primary mb-4">Experience</p>
+          <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-creo-dark mb-6 tracking-tight">
             {t.caseStudies.heading}
           </h2>
-          <p className="font-body text-lg text-creo-dark/70 max-w-2xl mx-auto leading-relaxed">
-            {t.caseStudies.sub}
+          <p className="font-body italic text-xl sm:text-2xl text-creo-dark/60 max-w-3xl mx-auto leading-relaxed">
+            {t.caseStudies.subtitle}
+          </p>
+          <p className="font-body text-base text-creo-muted max-w-3xl mx-auto leading-relaxed mt-6">
+            {t.caseStudies.intro}
           </p>
         </ScrollReveal>
 
-        {/* Cards */}
+        {/* Sector cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {t.caseStudies.items.map((item, i) => (
-            <ScrollReveal key={item.client} delay={i * 100}>
-              <div className="group bg-white border border-creo-dark/10 hover:border-creo-primary/40 hover:shadow-lg rounded-2xl p-8 flex flex-col h-full transition-all duration-300 cursor-pointer">
-                {/* Industry badge */}
-                <span className="inline-block font-body text-xs font-700 text-creo-burgundy/80 uppercase tracking-wider mb-6">
-                  {item.industry}
-                </span>
+          {t.caseStudies.sectors.map((sector, i) => {
+            const Icon = ICONS[i]
+            return (
+              <ScrollReveal key={sector.title} delay={i * 100}>
+                <div className="bg-white border border-creo-dark/10 rounded-2xl p-8 flex flex-col h-full hover:border-creo-primary/30 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-xl bg-creo-primary/10 flex items-center justify-center">
+                      <Icon size={20} className="text-creo-primary" aria-hidden="true" />
+                    </div>
+                    <h3 className="font-heading font-600 text-lg text-creo-dark">
+                      {sector.title}
+                    </h3>
+                  </div>
+                  {sector.scope && (
+                    <p className="font-body text-xs text-creo-muted mb-5">{sector.scope}</p>
+                  )}
+                  {!sector.scope && <div className="mb-5" />}
 
-                {/* Result */}
-                <div className="mb-4">
-                  <p className="font-heading font-800 text-2xl lg:text-3xl text-creo-primary leading-tight">
-                    {item.result}
+                  <p className="font-heading text-xs uppercase tracking-[0.2em] text-creo-primary/70 mb-3">
+                    {t.caseStudies.sharpenedLabel}
                   </p>
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {sector.points.map((point) => (
+                      <li key={point} className="flex items-start gap-2">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-creo-primary/40 shrink-0" />
+                        <span className="font-body text-sm text-creo-dark/80 leading-relaxed">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="border-t border-creo-dark/5 pt-5">
+                    <p className="font-heading text-xs uppercase tracking-[0.2em] text-creo-primary/70 mb-2">
+                      {t.caseStudies.mattersLabel}
+                    </p>
+                    <p className="font-body text-sm text-creo-dark/70 leading-relaxed">
+                      {sector.why}
+                    </p>
+                  </div>
                 </div>
-
-                <h3 className="font-heading font-700 text-lg text-creo-dark mb-3">{item.client}</h3>
-                <p className="font-body text-creo-dark/70 leading-relaxed text-sm flex-1">{item.desc}</p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mt-6 mb-6">
-                  {item.tags.map((tag, j) => (
-                    <span
-                      key={tag}
-                      className={`font-body text-xs font-600 px-3 py-1 rounded-full ${TAG_COLORS[j % TAG_COLORS.length]}`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <button className="inline-flex items-center gap-2 text-creo-dark/60 font-body text-sm font-600 group-hover:text-creo-primary group-hover:gap-3 transition-all duration-200 cursor-pointer mt-auto">
-                  {t.caseStudies.cta} <ArrowRight size={16} aria-hidden="true" />
-                </button>
-              </div>
-            </ScrollReveal>
-          ))}
+              </ScrollReveal>
+            )
+          })}
         </div>
+
+        {/* Throughline */}
+        <ScrollReveal delay={300}>
+          <div className="mt-16 text-center">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-10 h-px bg-creo-primary/30" />
+              <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-primary">{t.caseStudies.throughlineLabel}</p>
+              <div className="w-10 h-px bg-creo-primary/30" />
+            </div>
+            <p className="font-body italic text-lg sm:text-xl text-creo-dark/70 max-w-2xl mx-auto leading-relaxed">
+              {t.caseStudies.throughline}
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   )

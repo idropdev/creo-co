@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
-import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowDown } from 'lucide-react'
 import { useLang } from '../../contexts/LanguageContext'
 import ScrollReveal from '../ui/ScrollReveal'
@@ -144,13 +143,15 @@ export default function Hero() {
               className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-[600ms]
                 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
             >
-              <Link
-                to="/contact"
+              <a
+                href="https://links.mylayerone.com/widget/bookings/creoconadriana"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-white text-creo-dark font-heading font-600 text-sm uppercase tracking-wider px-10 py-5 rounded-full hover:bg-creo-khaki hover:text-creo-dark hover:gap-3 transition-all duration-300 cursor-pointer"
               >
                 {t.hero.cta1}
                 <ArrowRight size={16} aria-hidden="true" />
-              </Link>
+              </a>
               <a
                 href="#services"
                 onClick={(e) => {

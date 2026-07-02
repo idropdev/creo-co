@@ -41,7 +41,7 @@ export default function CTASection() {
             </p>
 
             <a
-              href="https://calendly.com/creoandco"
+              href="https://links.mylayerone.com/widget/bookings/creoconadriana"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-creo-dark text-white font-body font-700 text-base px-8 py-4 rounded-full hover:bg-creo-dark/90 hover:gap-3 transition-all duration-200 cursor-pointer"

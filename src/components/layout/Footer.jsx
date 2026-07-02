@@ -119,12 +119,14 @@ export default function Footer() {
             </ul>
 
             {/* CTA */}
-            <Link
-              to="/contact"
+            <a
+              href="https://links.mylayerone.com/widget/bookings/creoconadriana"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block mt-6 bg-creo-primary text-white font-body font-600 text-sm px-6 py-3 rounded-full hover:bg-creo-primary/90 transition-colors duration-200 cursor-pointer"
             >
               {t.nav.cta}
-            </Link>
+            </a>
           </div>
         </div>
 
