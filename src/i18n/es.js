@@ -196,7 +196,7 @@ const es = {
       }
     ],
     team: {
-      adriana: { name: 'Adriana', role: 'Fundadora y Directora' },
+      adriana: { name: 'Adriana Acosta', role: 'Fundadora y Directora' },
       rachel: { name: 'Rachel Ortiz', role: 'Directora de Operaciones' },
       paula: { name: 'Paula J. Castro', role: 'Pasante de Operaciones de Marketing y Estrategia' },
     }

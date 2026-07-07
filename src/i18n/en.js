@@ -207,7 +207,7 @@ const en = {
       }
     ],
     team: {
-      adriana: { name: 'Adriana', role: 'Founder & Principal' },
+      adriana: { name: 'Adriana Acosta', role: 'Founder & Principal' },
       rachel: { name: 'Rachel Ortiz', role: 'Director of Operations' },
       paula: { name: 'Paula J. Castro', role: 'Marketing & Strategy Operations Intern' },
     }
