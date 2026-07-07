@@ -7,6 +7,7 @@ import headshotAdriana from '../assets/team/IMG_5158-2.jpg'
 import headshotRachel from '../assets/team/rachel-ortiz.jpg'
 import headshotPaula from '../assets/team/paula-castro.jpg'
 import heroAbout from '../assets/hero/elpaso2023_andyaustin-5613.jpg'
+import logoMonogramWhite from '../assets/logos/Creo&Co_Monogram_White.svg'
 
 const FLIP_COLORS = [
   { bg: 'bg-creo-primary', text: 'text-white' },
@@ -30,6 +31,7 @@ function FlipCard({ title, description, index }) {
       <div className={`relative w-full h-full preserve-3d transition-transform duration-500 ${flipped ? 'rotate-y-180' : ''}`}>
         {/* Front */}
         <div className={`absolute inset-0 backface-hidden ${color.bg} rounded-2xl flex flex-col items-center justify-center p-8`}>
+          <img src={logoMonogramWhite} alt="Creo & Co. Monogram" className="w-14 h-14 mb-6 object-contain" />
           <h3 className={`font-heading font-600 text-3xl sm:text-4xl ${color.text} text-center uppercase tracking-wider`}>
             {title}
           </h3>
