@@ -21,20 +21,20 @@ export default function Borderplex() {
             <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12">
               <div className="flex flex-wrap gap-x-12 gap-y-4">
                 <div>
-                  <p className="font-heading font-600 text-4xl sm:text-5xl text-white">2.7M+</p>
-                  <p className="font-body text-sm text-white/50 mt-1">Binational Population</p>
+                  <p className="font-heading font-bold text-5xl sm:text-6xl text-white">2.7M+</p>
+                  <p className="font-body text-base font-semibold text-white/70 mt-2">Binational Population</p>
                 </div>
                 <div>
-                  <p className="font-heading font-600 text-4xl sm:text-5xl text-white">2</p>
-                  <p className="font-body text-sm text-white/50 mt-1">Countries</p>
+                  <p className="font-heading font-bold text-5xl sm:text-6xl text-white">2</p>
+                  <p className="font-body text-base font-semibold text-white/70 mt-2">Countries</p>
                 </div>
                 <div>
-                  <p className="font-heading font-600 text-4xl sm:text-5xl text-white">3</p>
-                  <p className="font-body text-sm text-white/50 mt-1">States</p>
+                  <p className="font-heading font-bold text-5xl sm:text-6xl text-white">3</p>
+                  <p className="font-body text-base font-semibold text-white/70 mt-2">States</p>
                 </div>
                 <div>
-                  <p className="font-heading font-600 text-4xl sm:text-5xl text-white">EN/ES</p>
-                  <p className="font-body text-sm text-white/50 mt-1">Bilingual</p>
+                  <p className="font-heading font-bold text-5xl sm:text-6xl text-white">EN/ES</p>
+                  <p className="font-body text-base font-semibold text-white/70 mt-2">Bilingual</p>
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function Borderplex() {
             <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-white mb-4 tracking-tight leading-[0.95]">
               {t.borderplex.heading}
             </h2>
-            <p className="font-body italic text-xl text-creo-khaki mb-8">
+            <p className="font-body text-xl sm:text-2xl text-creo-khaki mb-8">
               {t.borderplex.sub}
             </p>
             <p className="font-body text-white/60 leading-relaxed">

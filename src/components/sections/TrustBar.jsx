@@ -53,7 +53,7 @@ export default function TrustBar() {
               <img
                 src={partner.src}
                 alt={partner.name}
-                className="h-12 sm:h-14 w-auto max-w-[160px] object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+                className="h-12 sm:h-14 w-auto max-w-[160px] object-contain"
               />
             </div>
           ))}

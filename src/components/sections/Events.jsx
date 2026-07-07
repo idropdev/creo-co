@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Calendar, MapPin, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useLang } from '../../contexts/LanguageContext'
@@ -16,10 +17,10 @@ export const SAMPLE_EVENTS = [
   {
     id: 2,
     title: 'Flights and Sights',
-    date: '2026-06-20',
+    date: '2026-07-18',
     location: 'War Eagles Air Museum, 8012 Airport Rd, Santa Teresa, NM 88008',
     category: 'Aviation',
-    description: 'A unique aviation experience combining flight demonstrations and scenic views at the War Eagles Air Museum.',
+    description: '8:00 AM–11:00 AM. A unique aviation experience combining flight demonstrations and scenic views at the War Eagles Air Museum.',
     registerUrl: 'https://www.eventbrite.com/e/flights-sights-june-20-2026-tickets-1985906056474',
   },
   {
@@ -43,13 +44,12 @@ export const SAMPLE_EVENTS = [
   },
   {
     id: 5,
-    title: 'Mountainstar Sports Group Amigo Airsho',
-    date: '2026-10-24',
-    endDate: '2026-10-25',
+    title: 'Amigo Airsho Volunteer',
+    date: '2026-07-18',
     location: 'Biggs Army Airfield, Fort Bliss, TX',
     category: 'Air Show',
-    description: 'The premier air show of the Borderplex region featuring thrilling aerial performances and military demonstrations.',
-    registerUrl: 'https://www.amigoairsho.com/tickets',
+    description: '8:00 AM–11:00 AM. Join us in volunteering for the premier air show of the Borderplex region.',
+    registerUrl: 'https://www.amigoairsho.com/volunteer',
   },
 ]
 
@@ -97,7 +97,7 @@ export default function Events({ limit = 3 }) {
             <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-creo-dark tracking-tight">
               {t.events.heading}
             </h2>
-            <p className="font-body text-lg text-creo-muted mt-6 max-w-xl leading-relaxed">{t.events.sub}</p>
+            <p className="font-body text-xl text-creo-muted mt-6 max-w-xl leading-relaxed">{t.events.sub}</p>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>

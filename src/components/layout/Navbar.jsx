@@ -26,9 +26,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
+  const [prevLocation, setPrevLocation] = useState(location)
+  if (location !== prevLocation) {
+    setPrevLocation(location)
     setOpen(false)
-  }, [location])
+  }
 
   const handleHashLink = (e, href) => {
     if (href.startsWith('/#') && location.pathname === '/') {

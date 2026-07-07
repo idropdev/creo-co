@@ -4,6 +4,8 @@ import ScrollReveal from '../components/ui/ScrollReveal'
 import CTASection from '../components/sections/CTASection'
 import { useLang } from '../contexts/LanguageContext'
 import headshotAdriana from '../assets/team/IMG_5158-2.jpg'
+import headshotRachel from '../assets/team/rachel-ortiz.jpg'
+import headshotPaula from '../assets/team/paula-castro.jpg'
 import heroAbout from '../assets/hero/elpaso2023_andyaustin-5613.jpg'
 
 const FLIP_COLORS = [
@@ -71,7 +73,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <ScrollReveal>
               <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-primary mb-6">Our Approach</p>
-              <h2 className="font-body italic text-3xl sm:text-4xl text-creo-dark mb-8 leading-[1.3]">
+              <h2 className="font-heading font-500 text-3xl sm:text-4xl text-creo-dark mb-8 leading-[1.3]">
                 {t.about.body2}
               </h2>
               <div className="w-16 h-px bg-creo-primary mb-8" />
@@ -130,14 +132,34 @@ export default function AboutPage() {
             <h2 className="font-heading font-600 text-4xl sm:text-5xl text-creo-dark tracking-tight">The People Behind Creo&nbsp;&&nbsp;Co.</h2>
           </ScrollReveal>
 
-          <div className="max-w-sm mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16 max-w-5xl mx-auto">
             <ScrollReveal>
               <div className="text-center">
                 <div className="w-48 h-48 mx-auto rounded-2xl overflow-hidden mb-8 shadow-lg">
-                  <img src={headshotAdriana} alt="Adriana — Founder & Principal" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  <img src={headshotAdriana} alt={`${t.about.team.adriana.name} — ${t.about.team.adriana.role}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                 </div>
-                <h3 className="font-heading font-600 text-2xl text-creo-dark">Adriana</h3>
-                <p className="font-heading text-xs uppercase tracking-[0.2em] text-creo-primary mt-2">Founder & Principal</p>
+                <h3 className="font-heading font-600 text-2xl text-creo-dark">{t.about.team.adriana.name}</h3>
+                <p className="font-heading text-xs uppercase tracking-[0.2em] text-creo-primary mt-2">{t.about.team.adriana.role}</p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={100}>
+              <div className="text-center">
+                <div className="w-48 h-48 mx-auto rounded-2xl overflow-hidden mb-8 shadow-lg">
+                  <img src={headshotRachel} alt={`${t.about.team.rachel.name} — ${t.about.team.rachel.role}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                </div>
+                <h3 className="font-heading font-600 text-2xl text-creo-dark">{t.about.team.rachel.name}</h3>
+                <p className="font-heading text-xs uppercase tracking-[0.2em] text-creo-primary mt-2">{t.about.team.rachel.role}</p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={200}>
+              <div className="text-center">
+                <div className="w-48 h-48 mx-auto rounded-2xl overflow-hidden mb-8 shadow-lg">
+                  <img src={headshotPaula} alt={`${t.about.team.paula.name} — ${t.about.team.paula.role}`} className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500" />
+                </div>
+                <h3 className="font-heading font-600 text-2xl text-creo-dark">{t.about.team.paula.name}</h3>
+                <p className="font-heading text-xs uppercase tracking-[0.2em] text-creo-primary mt-2">{t.about.team.paula.role}</p>
               </div>
             </ScrollReveal>
           </div>

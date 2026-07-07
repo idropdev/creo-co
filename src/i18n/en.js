@@ -205,7 +205,12 @@ const en = {
         title: 'Integrity',
         desc: 'Integrity means operating with transparency, honesty, and accountability at every stage of the work.'
       }
-    ]
+    ],
+    team: {
+      adriana: { name: 'Adriana', role: 'Founder & Principal' },
+      rachel: { name: 'Rachel Ortiz', role: 'Director of Operations' },
+      paula: { name: 'Paula J. Castro', role: 'Marketing & Strategy Operations Intern' },
+    }
   }
 }
 

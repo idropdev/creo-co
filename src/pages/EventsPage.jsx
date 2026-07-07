@@ -54,7 +54,7 @@ export default function EventsPage() {
           <h1 className="font-heading font-600 text-5xl sm:text-6xl lg:text-7xl text-white mb-5 tracking-tight">
             {t.events.heading}
           </h1>
-          <p className="font-body text-lg text-white/60 max-w-2xl leading-relaxed">{t.events.sub}</p>
+          <p className="font-body text-xl text-white/60 max-w-2xl leading-relaxed">{t.events.sub}</p>
         </div>
       </section>
 

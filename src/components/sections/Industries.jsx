@@ -25,7 +25,7 @@ export default function Industries() {
           <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-creo-dark mb-5 tracking-tight">
             {t.industries.heading}
           </h2>
-          <p className="font-body text-lg text-creo-muted max-w-2xl mx-auto leading-relaxed">
+          <p className="font-body text-xl text-creo-muted max-w-2xl mx-auto leading-relaxed">
             {t.industries.sub}
           </p>
         </ScrollReveal>

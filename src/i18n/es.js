@@ -194,7 +194,12 @@ const es = {
         title: 'Integridad',
         desc: 'Integridad significa operar con transparencia, honestidad y responsabilidad en cada etapa del trabajo.'
       }
-    ]
+    ],
+    team: {
+      adriana: { name: 'Adriana', role: 'Fundadora y Directora' },
+      rachel: { name: 'Rachel Ortiz', role: 'Directora de Operaciones' },
+      paula: { name: 'Paula J. Castro', role: 'Pasante de Operaciones de Marketing y Estrategia' },
+    }
   },
   footer: {
     tagline: 'Estrategia y ejecución de marketing para organizaciones que quieren crecer.',

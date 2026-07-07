@@ -16,7 +16,7 @@ export default function CaseStudies() {
           <h2 className="font-heading font-600 text-4xl sm:text-5xl lg:text-6xl text-creo-dark mb-6 tracking-tight">
             {t.caseStudies.heading}
           </h2>
-          <p className="font-body italic text-xl sm:text-2xl text-creo-dark/60 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-body text-xl sm:text-2xl text-creo-dark/60 max-w-3xl mx-auto leading-relaxed">
             {t.caseStudies.subtitle}
           </p>
           <p className="font-body text-base text-creo-muted max-w-3xl mx-auto leading-relaxed mt-6">
@@ -78,7 +78,7 @@ export default function CaseStudies() {
               <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-primary">{t.caseStudies.throughlineLabel}</p>
               <div className="w-10 h-px bg-creo-primary/30" />
             </div>
-            <p className="font-body italic text-lg sm:text-xl text-creo-dark/70 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-heading font-500 text-lg sm:text-xl text-creo-dark/70 max-w-2xl mx-auto leading-relaxed">
               {t.caseStudies.throughline}
             </p>
           </div>

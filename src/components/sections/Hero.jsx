@@ -1,9 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { ArrowRight, ArrowDown } from 'lucide-react'
 import { useLang } from '../../contexts/LanguageContext'
-import ScrollReveal from '../ui/ScrollReveal'
 import heroImg from '../../assets/hero/El Paso_Juarez_2024_PacoIbarra.jpg'
-import heroImg2 from '../../assets/hero/elpaso2023_andyaustin-5613.jpg'
 
 export default function Hero() {
   const { t } = useLang()
@@ -131,13 +129,6 @@ export default function Hero() {
               </h1>
             </div>
 
-            <p
-              className={`font-body text-lg sm:text-xl text-white/70 max-w-xl leading-relaxed mb-12
-                transition-all duration-700 delay-500 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-            >
-              {t.hero.sub}
-            </p>
-
             {/* CTAs */}
             <div
               className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-[600ms]
@@ -192,33 +183,6 @@ export default function Hero() {
           <span className="font-heading text-xs uppercase tracking-[0.2em]">Scroll</span>
           <ArrowDown size={16} className="animate-bounce" aria-hidden="true" />
         </a>
-      </section>
-
-      {/* Mission statement with image */}
-      <section className="bg-creo-light py-24 sm:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <ScrollReveal>
-              <p className="font-heading text-xs uppercase tracking-[0.3em] text-creo-primary mb-6">Who We Are</p>
-              <h2 className="font-body italic text-3xl sm:text-4xl lg:text-5xl text-creo-dark leading-[1.2] mb-8">
-                Creo is a Spanish word for &ldquo;create and believe,&rdquo; and we are dedicated to building strategic clarity.
-              </h2>
-              <div className="w-16 h-px bg-creo-primary" />
-            </ScrollReveal>
-
-            <ScrollReveal delay={150}>
-              <div className="relative">
-                <div className="rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src={heroImg2}
-                    alt="El Paso skyline overlooking the city"
-                    className="w-full h-[400px] lg:h-[500px] object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
       </section>
     </div>
   )
