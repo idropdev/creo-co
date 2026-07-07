@@ -7,6 +7,7 @@ import logoWorkforce from '../../assets/partners/Workforce Solutions Borderplex.
 import logoUnitedWay from '../../assets/partners/United Way El Paso County.png'
 import logoProjectVida from '../../assets/partners/Project Vida Logo.png'
 import logoMikeLoya from '../../assets/partners/Mike Loya Center For Innovation.png'
+import logoDropDev from '../../assets/partners/DropDev.png'
 import logoWomenWings from '../../assets/partners/Women With Wings.png'
 import logoAirsho from '../../assets/partners/MTST&AirSho-Final (1).jpg'
 import logoGhostlight from '../../assets/partners/Ghostlight Creative.png'
@@ -21,6 +22,7 @@ const PARTNERS = [
   { name: 'United Way El Paso County', src: logoUnitedWay },
   { name: 'Project Vida', src: logoProjectVida },
   { name: 'Mike Loya Center For Innovation', src: logoMikeLoya },
+  { name: 'DropDev', src: logoDropDev },
   { name: 'Women With Wings', src: logoWomenWings },
   { name: 'Amigo Airsho', src: logoAirsho },
   { name: 'Ghostlight Creative', src: logoGhostlight },
